@@ -1,0 +1,59 @@
+# === Python cache, logs ===
+__pycache__/
+*.py[cod]
+*.log
+*.out
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+
+# === Local virtual environments ===
+.venv/
+.uv/
+env/
+venv/
+
+# === Jupyter Notebooks (if any) ===
+.ipynb_checkpoints/
+
+# === Model artifacts ===
+artifacts/
+*.onnx
+*.pt
+*.pth
+*.bin
+*.h5
+
+# === uv + lockfiles (keep lock, ignore state) ===
+.uv/state/
+.uv/cache/
+
+# === Test outputs ===
+coverage/
+htmlcov/
+.tox/
+.nox/
+.cache/
+pytest_cache/
+*.coverage
+coverage.xml
+
+# === MyPy, Ruff, etc ===
+.mypy_cache/
+ruff_cache/
+
+# === IDEs ===
+.vscode/
+.idea/
+*.code-workspace
+
+# === Docker build context ===
+*.tar
+*.img
+*.bak
+
+# === System ===
+Thumbs.db
+ehthumbs.db
+desktop.ini
