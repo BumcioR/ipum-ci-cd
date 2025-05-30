@@ -1,5 +1,5 @@
+# inputs context
 name: Inputs context example
-
 on:
   workflow_dispatch:
     inputs:
@@ -12,6 +12,6 @@ jobs:
   show-input:
     runs-on: ubuntu-latest
     steps:
-      - name: Inputs context
+      - name: Inputs contexts
         run: |
           echo "Deploy?: ${{ inputs.to_deploy }}"

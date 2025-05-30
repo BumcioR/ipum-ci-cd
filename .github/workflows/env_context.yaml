@@ -1,0 +1,23 @@
+# env context
+name: Env context example
+on: push
+
+# workflow env (global for all jobs)
+env:
+  GREETING: Hello
+
+jobs:
+  show-env:
+    runs-on: ubuntu-latest
+    # job env (global for all steps within job)
+    env:
+      TARGET: World
+    steps:
+      - name: Env context
+        run: |
+          echo "${{ env.GREETING }} ${{ env.TARGET }}"
+      - name: Overwritten env context
+        env: # step env (local env for specific step)
+          GREETING: HELLO!
+        run: |
+          echo "${{ env.GREETING }} ${{ env.TARGET }}"

@@ -1,0 +1,13 @@
+# vars context
+# variables are repository-level variables that can be reused in many individual workflows
+name: Vars Context Example
+
+on: workflow_dispatch
+
+jobs:
+  show-vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show a configuration variable
+        run: |
+          echo "Config variable: ${{ vars.MY_CONFIG }}"
