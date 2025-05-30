@@ -47,7 +47,7 @@ jobs:
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
       - name: Add uv to PATH
-        run: echo "$HOME/.cargo/bin" >> $GITHUB_PATH #added to PATH
+        run: echo "$HOME/.cargo/bin" >> $GITHUB_PATH #added uv to PATH
 
       - name: Install deployment dependencies
         run: uv sync --group deployment
@@ -59,4 +59,8 @@ jobs:
 
       - name: Export model to ONNX
         run: uv run python main.py --script export
+        working-directory: polish-sentiment-app
+
+      - name: Build Docker image for ML inference
+        run: docker build -t polish-sentiment-app-onnx:latest .
         working-directory: polish-sentiment-app
