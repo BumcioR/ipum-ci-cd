@@ -1,4 +1,4 @@
-FROM python:3.13-slim-bookworm as builder
+FROM python:3.12-slim-bookworm AS builder
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY pyproject.toml uv.lock ./
 
 RUN uv sync --group inference
 
-FROM python:3.13-slim-bookworm AS runtime
+FROM python:3.12-slim-bookworm AS runtime
 
 WORKDIR /app
 ENV PATH="/app/.venv/bin:$PATH"
@@ -19,7 +19,8 @@ COPY --from=builder /app/.venv /app/.venv
 
 COPY settings.py settings.py
 COPY app.py app.py
-COPY src/ ./src/
+COPY src/inference/ ./src/inference/        # instead of src/
+COPY src/app/       ./src/app/              # instead of src/
 COPY artifacts/onnx/twitter-sentiment-pl-base.onnx ./artifacts/onnx/twitter-sentiment-pl-base.onnx
 COPY artifacts/tokenizer/tokenizer.json ./artifacts/tokenizer/tokenizer.json
 
